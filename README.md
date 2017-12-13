@@ -13,7 +13,18 @@ The basic policy flow is as follows:
 - **Extract Certificate Attributes Filter**: This filter, renamed "Extract Attributes From Client Certificate", parses the client certificate to make a large number of certificate attributes available for processing. The created attributes can be easily viewed by right clicking this filter and selecting the "Show All Attributes" option in the policy configuration window.
 - **Extract REST Request Attributes**: This filter makes HTTP Headers and Query Parameters available for processing in policy.
 - **Certificate Attributes Filter**: This filter, renamed "Cert Attribute Check - Ensure User is US Based", allows you to enforce a digital policy that provides entitlement management via Attribute Based Access Control (ABAC). This is enabled by comparing the certificate attributes that construct the client certificate DN (eg organization [O], location [L]) against accepted values. In this policy, we confirm the country code on the users certificate identifies them as a US based resource.
-- **Compare Attribute Filter**: This filter is used twice in the policy, renamed "Ensure user is based one of the accepted office locations" and "Check Params - Positive Validation Scan", compares dynamically populated attribute values against accepted or expected results. The first implementation requires AT LEAST ONE of the accepted values to be true, in this example ensuring a requestor's certificate identifies them as being located out of an acceptable office. The second implementation requires ALL of the URL parameters being submitted to meet expected formats as defined by a regex. This could be used as part of an enrollment service, query service, etc.
+- **Compare Attribute Filter**: This filter is used twice in the policy, renamed "Ensure user is based one of the accepted office locations" and "Check Params - Positive Validation Scan", compares dynamically populated attribute values against accepted or expected results. The first implementation requires AT LEAST ONE of the accepted values to be true, in this example ensuring a requestor's certificate identifies them as being located out of an acceptable office. The second implementation requires ALL of the URL parameters being submitted to meet expected formats as defined by a regex, as shown below:
+
+![alt text](https://github.com/Axway-API-Management-Plus/Positive-Field-Validation/blob/master/example/src/paramFilter.png "Param Filter")
+
+This filter looks for the following samples, which can be updated to meet the needs of your testing:
+- Date: May only contain only 8 numeric digits, focusing on a DDMMYYYY format. This could be extended to limit values on each numeric set, for example only allowing the second pair of numbers for month (MM) to allow 01-12.
+- Email: May only contain lowercase letters, followed by an '@' sign, followed by the axwaydemo domain. eg: dwille@axwaydemo.com
+- Fname and Lname: Look for a single uppercase letter followed by lower case letters. Numbers, special characters, etc. are not allowed These values must be 1 to 16 characters. eg: Daniel Wille
+- ID: This may only contain 6 total characters with the string "ID" follwed by 4 numberic digits. eg: ID1234
+- Phone: This may only contain 12 total characters, three digits follwed by a dash follwed by three digits followed by a dash followed by four digits. This supports a phone number in the format: 555-555-5555
+
+This could be used as part of an enrollment service, query service, etc.
 - **Set Message and Reflect Message Filters**: These set a basic 200-OK response and reflects it to the policy requestor to provide an expected and easy to digest outcome if the validation passes.
 
 Once updated to fit your environment, this policy can be used in several ways:
