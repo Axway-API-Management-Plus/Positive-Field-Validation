@@ -34,12 +34,13 @@ This artefact was successfully tested for the following versions:
 
 Import Dialog:
 
-![alt text](https://github.com/Axway-API-Management-Plus/Random_Number_Generation/blob/master/example/src/importFrag.png "Import Fragment")
+![alt text](https://github.com/Axway-API-Management-Plus/Positive-Field-Validation/blob/master/example/src/importFrag.png "Import Fragment")
 
 ## Usage
 
 - Send a sample request message to the policy.
 
+Example URL with query params: https://192.168.159.134:8444/posival?date=12122017&fname=Daniel&lname=Wille&id=ID1234&phone=555-555-5555&email=dwille@axwaydemo.com
 
 ## Bug and Caveats
 
