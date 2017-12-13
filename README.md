@@ -22,7 +22,7 @@ Once updated to fit your environment, this policy can be used in several ways:
 - It can be registered as a REST API via either the API Gateway Rest API Repository  configuration in Policy Studio or by creating a new API in API Manager.
 - It can be registered as an Inbound Security Policy for use within API Manager via 'Server Settings --> API Manager --> Inbound Security Policies' in Policy Studio. It may also be used as a Request or Response policy in the same way to validate messages being passed through.
 
-## API Management Version ## API Management Version Compatibility
+## API Management Version Compatibility
 This artefact was successfully tested for the following versions:
 - V7.5.3
 
@@ -32,6 +32,9 @@ This artefact was successfully tested for the following versions:
 - Download the PositiveFieldValidation*.xml policy file.
 - There are several options to import this file, including Team Development, REST API, and sample scripted options included with the Axway solution. The simplest way however is to open Policy Studio and select 'File --> Import --> Import Configuration Fragment'.
 
+Import Dialog:
+
+![alt text](https://github.com/Axway-API-Management-Plus/Random_Number_Generation/blob/master/example/src/importFrag.png "Import Fragment")
 
 ## Usage
 
